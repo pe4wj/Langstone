@@ -54,7 +54,8 @@ class Lang_RX(gr.top_block):
         	avg_alpha=0.9,
         	average=True,
         )
-        self.low_pass_filter_0 = filter.fir_filter_ccf(1, firdes.low_pass(1, 48000, 3000, 1000, firdes.WIN_HAMMING, 6.76))
+        self.low_pass_filter_0 = filter.fir_filter_ccf(1, firdes.low_pass(
+        	1, 48000, 3000, 1000, firdes.WIN_HAMMING, 6.76))
         self.freq_xlating_fir_filter_xxx_0 = filter.freq_xlating_fir_filter_ccc(11, (firdes.low_pass(1,529200,23000,2000)), RxOffset, 528000)
         self.blocks_udp_sink_0 = blocks.udp_sink(gr.sizeof_float*512, '127.0.0.1', 7373, 1472, False)
         self.blocks_null_sink_0 = blocks.null_sink(gr.sizeof_float*512)
@@ -96,9 +97,9 @@ class Lang_RX(gr.top_block):
         self.connect((self.analog_nbfm_rx_0, 0), (self.blocks_multiply_const_vxx_2_0, 0))
         self.connect((self.analog_pwr_squelch_xx_0, 0), (self.analog_nbfm_rx_0, 0))
         
-        #self.connect((self.band_pass_filter_0, 0), (self.analog_pwr_squelch_xx_0, 0))
-        self.connect((self.band_pass_filter_0, 0), (self.low_pass_filter_0, 0))
-        self.connect((self.low_pass_filter_0, 0), (self.analog_pwr_squelch_xx_0, 0))
+        self.connect((self.band_pass_filter_0, 0), (self.analog_pwr_squelch_xx_0, 0))
+        #self.connect((self.band_pass_filter_0, 0), (self.low_pass_filter_0, 0))
+        #self.connect((self.low_pass_filter_0, 0), (self.analog_pwr_squelch_xx_0, 0))
         
         self.connect((self.band_pass_filter_0, 0), (self.blocks_complex_to_mag_0, 0))
         self.connect((self.band_pass_filter_0, 0), (self.blocks_complex_to_real_0, 0))
