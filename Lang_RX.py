@@ -89,17 +89,28 @@ class Lang_RX(gr.top_block):
           )
         self.analog_agc3_xx_0 = analog.agc3_cc(1e-2, 5e-7, 0.1, 1.0, 1)
         self.analog_agc3_xx_0.set_max_gain(1000)
+        
+        # post NBFM detector (audio) BPF
+        self.band_pass_filter_1 = filter.fir_filter_fff(1, firdes.band_pass(
+        	1, 48000, 300, 3300, 100, firdes.WIN_HAMMING, 6.76))
 
         ##################################################
         # Connections
         ##################################################
         self.connect((self.analog_agc3_xx_0, 0), (self.blocks_complex_to_real_0_0, 0))
-        self.connect((self.analog_nbfm_rx_0, 0), (self.blocks_multiply_const_vxx_2_0, 0))
+        
+        #self.connect((self.analog_nbfm_rx_0, 0), (self.blocks_multiply_const_vxx_2_0, 0))
+        
+        # NBFM Receive to BPF
+        self.connect((self.analog_nbfm_rx_0, 0), (self.band_pass_filter_1, 0))
+        self.connect((self.band_pass_filter_1, 0), (self.blocks_multiply_const_vxx_2_0, 0))
+        
+        
         self.connect((self.analog_pwr_squelch_xx_0, 0), (self.analog_nbfm_rx_0, 0))
         
-        self.connect((self.band_pass_filter_0, 0), (self.analog_pwr_squelch_xx_0, 0))
-        #self.connect((self.band_pass_filter_0, 0), (self.low_pass_filter_0, 0))
-        #self.connect((self.low_pass_filter_0, 0), (self.analog_pwr_squelch_xx_0, 0))
+        #self.connect((self.band_pass_filter_0, 0), (self.analog_pwr_squelch_xx_0, 0))
+        self.connect((self.band_pass_filter_0, 0), (self.low_pass_filter_0, 0))
+        self.connect((self.low_pass_filter_0, 0), (self.analog_pwr_squelch_xx_0, 0))
         
         self.connect((self.band_pass_filter_0, 0), (self.blocks_complex_to_mag_0, 0))
         self.connect((self.band_pass_filter_0, 0), (self.blocks_complex_to_real_0, 0))

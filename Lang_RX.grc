@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<?grc format='1' created='3.7.11'?>
+<?grc format='1' created='3.7.13'?>
 <flow_graph>
   <timestamp>Sun Oct 20 17:07:22 2019</timestamp>
   <block>
@@ -73,12 +73,20 @@
       <value>True</value>
     </param>
     <param>
+      <key>sizing_mode</key>
+      <value>fixed</value>
+    </param>
+    <param>
       <key>thread_safe_setters</key>
       <value></value>
     </param>
     <param>
       <key>title</key>
       <value></value>
+    </param>
+    <param>
+      <key>placement</key>
+      <value>(0,0)</value>
     </param>
   </block>
   <block>
@@ -557,7 +565,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(456, 144)</value>
+      <value>(424, 108)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1427,40 +1435,16 @@
   <block>
     <key>pluto_source</key>
     <param>
-      <key>bbdc</key>
-      <value>True</value>
-    </param>
-    <param>
       <key>alias</key>
       <value></value>
-    </param>
-    <param>
-      <key>buffer_size</key>
-      <value>0x800</value>
     </param>
     <param>
       <key>comment</key>
       <value></value>
     </param>
     <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>uri</key>
-      <value>ip:pluto.local</value>
-    </param>
-    <param>
       <key>_enabled</key>
       <value>True</value>
-    </param>
-    <param>
-      <key>auto_filter</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>filter</key>
-      <value></value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -1471,16 +1455,40 @@
       <value>0</value>
     </param>
     <param>
-      <key>gain</key>
-      <value>"slow_attack"</value>
-    </param>
-    <param>
       <key>id</key>
       <value>pluto_source_0</value>
     </param>
     <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>auto_filter</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>bandwidth</key>
+      <value>2000000</value>
+    </param>
+    <param>
+      <key>bbdc</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>buffer_size</key>
+      <value>0x800</value>
+    </param>
+    <param>
+      <key>filter</key>
+      <value></value>
+    </param>
+    <param>
       <key>frequency</key>
       <value>1000000000</value>
+    </param>
+    <param>
+      <key>gain</key>
+      <value>"slow_attack"</value>
     </param>
     <param>
       <key>manual_gain</key>
@@ -1503,12 +1511,12 @@
       <value>True</value>
     </param>
     <param>
-      <key>bandwidth</key>
-      <value>2000000</value>
-    </param>
-    <param>
       <key>samplerate</key>
       <value>528000</value>
+    </param>
+    <param>
+      <key>uri</key>
+      <value>ip:pluto.local</value>
     </param>
   </block>
   <connection>
