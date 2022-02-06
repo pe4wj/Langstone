@@ -38,14 +38,14 @@ done
 if [ ${retry} -ge 4 ]; then
   clear
   sudo cp /home/pi/Langstone/plutofail.bgra /dev/fb0
-  sleep 5
+  sleep 8
   exit 1
 fi
 
 # Check if Pluto was rebooting and was slow to respond
 
 if [ ${retry} -ge 1 ]; then
-   sleep 5
+   sleep 8
 fi
 
 #start up the GNU Radio flowgraphs

@@ -63,7 +63,7 @@ class Lang_RX(gr.top_block):
         self.blocks_multiply_const_vxx_2_1 = blocks.multiply_const_vff((Mode==5, ))
         self.blocks_multiply_const_vxx_2_0 = blocks.multiply_const_vff(((Mode==4) * 0.2, ))
         self.blocks_multiply_const_vxx_2 = blocks.multiply_const_vff((Mode<4, ))
-        self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff(((AFGain/100.0) *  (not Mute), ))
+        self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff(((AFGain/100.0) * 4 *  (not Mute), ))
         self.blocks_float_to_complex_0 = blocks.float_to_complex(1)
         self.blocks_complex_to_real_0_0 = blocks.complex_to_real(1)
         self.blocks_complex_to_real_0 = blocks.complex_to_real(1)
